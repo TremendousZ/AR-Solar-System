@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     let configuaration = ARWorldTrackingConfiguration()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+//        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         self.sceneView.session.run(configuaration)
         self.sceneView.autoenablesDefaultLighting = true
         // Do any additional setup after loading the view.
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         // Create nodes for planets and parent nodes to allow planets independent rotation
-        let sun = planet(geometry: SCNSphere(radius: 0.9), diffuse: UIImage(named:"Sun diffuse"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0,0,-1));
+        let sun = planet(geometry: SCNSphere(radius: 1.8), diffuse: UIImage(named:"Sun diffuse"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0,0,-4));
 //        let sun = SCNNode(geometry: SCNSphere(radius: 0.9))
         
         let mercuryParent = SCNNode()
@@ -67,23 +67,23 @@ class ViewController: UIViewController {
         // Set the position of the nodes relative to the cameras position
         // Set the planets based off the suns position, set the moons based on the planets locations
 //        sun.position = SCNVector3(0,0,-1)
-        mercuryParent.position = SCNVector3(0,0,-1)
-        venusParent.position = SCNVector3(0,0,-1)
+        mercuryParent.position = SCNVector3(0,0,-4)
+        venusParent.position = SCNVector3(0,0,-4)
         
-        earthParent.position = SCNVector3(0,0,-1)
+        earthParent.position = SCNVector3(0,0,-4)
         moonParent.position = SCNVector3(2,0,0)
         
-        marsParent.position = SCNVector3(0,0,-1)
+        marsParent.position = SCNVector3(0,0,-4)
         deimosParent.position = SCNVector3(2.5,0,0)
         phobosParent.position = SCNVector3(2.5,0,0)
         
-        jupiterParent.position = SCNVector3(0,0,-1)
+        jupiterParent.position = SCNVector3(0,0,-4)
         ioParent.position = SCNVector3(3.5,0,0)
         europaParent.position = SCNVector3(3.5,0,0)
         garymedeParent.position = SCNVector3(3.5,0,0)
         callistoParent.position = SCNVector3(3.5,0,0)
         
-        saturnParent.position = SCNVector3(0,0,-1)
+        saturnParent.position = SCNVector3(0,0,-4)
         mimasParent.position = SCNVector3(5,0,0)
         encheladusParent.position = SCNVector3(5,0,0)
         tethysParent.position = SCNVector3(5,0,0)
@@ -92,14 +92,14 @@ class ViewController: UIViewController {
         titanParent.position = SCNVector3(5,0,0)
         iapetusParent.position = SCNVector3(5,0,0)
         
-        uranusParent.position = SCNVector3(0,0,-1)
+        uranusParent.position = SCNVector3(0,0,-4)
         mirandaParent.position = SCNVector3(7,0,0)
         arielParent.position = SCNVector3(7,0,0)
         umbrielParent.position = SCNVector3(7,0,0)
         titaniaParent.position = SCNVector3(7,0,0)
         oberonParent.position = SCNVector3(7,0,0)
         
-        neptuneParent.position = SCNVector3(0,0,-1)
+        neptuneParent.position = SCNVector3(0,0,-4)
         proteusParent.position = SCNVector3(9,0,0)
         tritonParent.position = SCNVector3(9,0,0)
         
@@ -118,66 +118,66 @@ class ViewController: UIViewController {
         //Sun
       
         // Mercury
-        let mercury = planet(geometry: SCNSphere(radius: 0.030319), diffuse: UIImage(named: "Mercury diffuse"), specular: nil, emission: nil, normal:nil, position: SCNVector3(1,0,0))
+        let mercury = planet(geometry: SCNSphere(radius: 0.06), diffuse: UIImage(named: "Mercury diffuse"), specular: nil, emission: nil, normal:nil, position: SCNVector3(2,0,0))
  
         // Venus
-        let venus = planet(geometry: SCNSphere(radius: 0.075208), diffuse: UIImage(named: "Venus diffuse"), specular:nil,  emission:nil, normal: UIImage(named:"Venus effect"), position: SCNVector3(1.5,0,0))
+        let venus = planet(geometry: SCNSphere(radius: 0.15), diffuse: UIImage(named: "Venus diffuse"), specular:nil,  emission:nil, normal: UIImage(named:"Venus effect"), position: SCNVector3(3,0,0))
        
         // Earth and the Moon
-        let earth = planet(geometry: SCNSphere(radius: 0.079175), diffuse: UIImage(named: "Earth day"), specular: UIImage(named:"Earth specular"), emission: UIImage(named:"Earth clouds"), normal: UIImage(named:"Earth normal"), position: SCNVector3(2,0,0))
+        let earth = planet(geometry: SCNSphere(radius: 0.16), diffuse: UIImage(named: "Earth day"), specular: UIImage(named:"Earth specular"), emission: UIImage(named:"Earth clouds"), normal: UIImage(named:"Earth normal"), position: SCNVector3(4,0,0))
       
-        let moon = planet(geometry: SCNSphere(radius:0.0263916), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
+        let moon = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.6))
         
         // Mars, Diemos, and Phobos
-        let mars = planet(geometry: SCNSphere(radius: 0.042123), diffuse: UIImage(named: "Mars diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(2.5,0,0))
+        let mars = planet(geometry: SCNSphere(radius: 0.084), diffuse: UIImage(named: "Mars diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(5,0,0))
         
-        let deimos = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
+        let deimos = planet(geometry: SCNSphere(radius:0.0014), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
         
-        let phobos = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-0.5))
+        let phobos = planet(geometry: SCNSphere(radius:0.0028), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.2,-0.5))
         // Jupiter, Io, Europa, Garymede, Callisto
-        let jupiter = planet(geometry: SCNSphere(radius: 0.86881), diffuse: UIImage(named: "Jupiter diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(3.5,0,0))
+        let jupiter = planet(geometry: SCNSphere(radius: 1.2), diffuse: UIImage(named: "Jupiter diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(7,0,0))
         
-        let io = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
+        let io = planet(geometry: SCNSphere(radius:0.0022), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-1))
         
-        let europa = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-0.5))
+        let europa = planet(geometry: SCNSphere(radius:0.0018), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.1,-0.5))
         
-        let garymede = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,2,-0.3))
+        let garymede = planet(geometry: SCNSphere(radius:0.0032), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.6,-0.3))
         
-        let callisto = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-1.5))
+        let callisto = planet(geometry: SCNSphere(radius:0.0028), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-1.5))
  
         // Saturn, Mimas, Encheladus, Tethys, Dione, Rhea, Titan, Iapetus
-        let saturn = planet(geometry: SCNSphere(radius: 0.72367), diffuse: UIImage(named: "Saturn diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(5,0,0))
+        let saturn = planet(geometry: SCNSphere(radius: 1.0), diffuse: UIImage(named: "Saturn diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(10,0,0))
         
-        let mimas = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
+        let mimas = planet(geometry: SCNSphere(radius:0.0016), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
         
-        let encheladus = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-0.5))
+        let encheladus = planet(geometry: SCNSphere(radius:0.018), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.2,-0.5))
         
-        let tethys = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,2,-0.3))
+        let tethys = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.7,-0.3))
         
-        let dione = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-1.5))
+        let dione = planet(geometry: SCNSphere(radius:0.02), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-1.5))
         
-        let rhea = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
+        let rhea = planet(geometry: SCNSphere(radius:0.025), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
         
-        let titan = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-0.5))
+        let titan = planet(geometry: SCNSphere(radius:0.10), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-0.5))
         
-        let iapetus = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,2,-0.3))
+        let iapetus = planet(geometry: SCNSphere(radius:0.022), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,-0.01,-0.8))
         
         
         // Uranus, Miranda, Ariel, Umbriel, Titania, and Oberon
-        let uranus = planet(geometry: SCNSphere(radius: 0.31518), diffuse: UIImage(named: "Uranus diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(7,0,0))
+        let uranus = planet(geometry: SCNSphere(radius: 0.31518), diffuse: UIImage(named: "Uranus diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(14,0,0))
         
-        let miranda = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-0.5))
+        let miranda = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.2,-0.5))
                
-        let ariel = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,2,-0.3))
+        let ariel = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,-0.1,-0.3))
                
-        let umbriel = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-1.5))
+        let umbriel = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.1,-1.5))
                
         let titania = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
                
         let oberon = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0.5,-0.5))
         
         // Neptune, Proteus and Triton
-        let neptune = planet(geometry: SCNSphere(radius: 0.30599), diffuse: UIImage(named: "Neptune diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(9,0,0))
+        let neptune = planet(geometry: SCNSphere(radius: 0.30599), diffuse: UIImage(named: "Neptune diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(18,0,0))
         
         let proteus = planet(geometry: SCNSphere(radius:0.05), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
                   
@@ -235,73 +235,89 @@ class ViewController: UIViewController {
         // LOOK INTO: Comets
         // LOOK INTO: Elliptical orbits
         
+        // All Orbits divided by 3 to improve look
+        // commented out proportion orbits
+        // All Planetary Rotation slowed down to all user to see planets
+        
         let sunAction = Rotation(time: 27)
         
         let mercuryParentRotation = Rotation(time: 88)
-        let mercuryRotation = Rotation(time: 58.666667)
-        
+//        let mercuryRotation = Rotation(time: 58.666667)
+        let mercuryRotation = Rotation(time: 10)
         let venusParentRotation = Rotation(time: 225)
-        let venusRotation = Rotation(time: 242.999999999)
-        
-        let earthParentRotation = Rotation(time: 365)
-        let earthRotation = Rotation(time: 1)
+//        let venusRotation = Rotation(time: 242.999999999)
+        let venusRotation = Rotation(time: 20)
+//        let earthParentRotation = Rotation(time: 365)
+        let earthParentRotation = Rotation(time: 25)
+//        let earthRotation = Rotation(time: 1)
+        let earthRotation = Rotation(time: 10)
         let moonParentRotation = Rotation(time: 27.3)
         let moonRotation = Rotation(time: 27.3)
         
-        let marsParentRotation = Rotation(time: 687)
-        let marsRotation = Rotation(time: 1.0416666)
-        let deimosParentRotation = Rotation(time: 6)
-        let deimosRotation = Rotation(time: 1)
-        let phobosParentRotation = Rotation(time: 6)
-        let phobosRotation = Rotation(time: 1)
+//        let marsParentRotation = Rotation(time: 687)
+        let marsParentRotation = Rotation(time: 40)
+//        let marsRotation = Rotation(time: 1.0416666)
+         let marsRotation = Rotation(time: 11)
+        let deimosParentRotation = Rotation(time: 10)
+        let deimosRotation = Rotation(time: 10)
+        let phobosParentRotation = Rotation(time: 12)
+        let phobosRotation = Rotation(time: 10)
           // Jupiter, Io, Europa, Garymede, Callisto
-        let jupiterParentRotation = Rotation(time: 4380)
-        let jupiterRotation = Rotation(time: 0.416)
+//        let jupiterParentRotation = Rotation(time: 4380)
+        let jupiterParentRotation = Rotation(time: 60)
+//        let jupiterRotation = Rotation(time: 0.416)
+         let jupiterRotation = Rotation(time: 8)
         let ioParentRotation = Rotation(time: 6)
-        let ioRotation = Rotation(time: 1)
+        let ioRotation = Rotation(time: 10)
         let europaParentRotation = Rotation(time: 6)
-        let europaRotation = Rotation(time: 1)
+        let europaRotation = Rotation(time: 12)
         let garymedeParentRotation = Rotation(time: 6)
-        let garymedeRotation = Rotation(time: 1)
+        let garymedeRotation = Rotation(time: 14)
         let callistoParentRotation = Rotation(time: 6)
-        let callistoRotation = Rotation(time: 1)
+        let callistoRotation = Rotation(time: 16)
            // Saturn, Mimas, Encheladus, Tethys, Dione, Rhea, Titan, Iapetus
-        let saturnParentRotation = Rotation(time: 10585)
-        let saturnRotation = Rotation(time: 0.458333)
+//        let saturnParentRotation = Rotation(time: 10585)
+          let saturnParentRotation = Rotation(time: 80)
+//        let saturnRotation = Rotation(time: 0.458333)
+        let saturnRotation = Rotation(time: 7)
         let mimasParentRotation = Rotation(time: 6)
-        let mimasRotation = Rotation(time: 1)
+        let mimasRotation = Rotation(time: 10)
         let encheladusParentRotation = Rotation(time: 6)
-        let encheladusRotation = Rotation(time: 1)
+        let encheladusRotation = Rotation(time: 12)
         let tethysParentRotation = Rotation(time: 6)
-        let tethysRotation = Rotation(time: 1)
+        let tethysRotation = Rotation(time: 13)
         let dioneParentRotation = Rotation(time: 6)
-        let dioneRotation = Rotation(time: 1)
+        let dioneRotation = Rotation(time: 15)
         let rheaParentRotation = Rotation(time: 6)
-        let rheaRotation = Rotation(time: 1)
+        let rheaRotation = Rotation(time: 11)
         let titanParentRotation = Rotation(time: 6)
-        let titanRotation = Rotation(time: 1)
+        let titanRotation = Rotation(time: 13)
         let iapetusParentRotation = Rotation(time: 6)
-        let iapetusRotation = Rotation(time: 1)
+        let iapetusRotation = Rotation(time: 14)
               // Uranus, Miranda, Ariel, Umbriel, Titania, and Oberon
-        let uranusParentRotation = Rotation(time: 30660)
-        let uranusRotation = Rotation(time: 0.70833333)
+//        let uranusParentRotation = Rotation(time: 30660)
+         let uranusParentRotation = Rotation(time: 100)
+//        let uranusRotation = Rotation(time: 0.70833333)
+        let uranusRotation = Rotation(time: 9)
         let mirandaParentRotation = Rotation(time: 6)
-        let mirandaRotation = Rotation(time: 1)
+        let mirandaRotation = Rotation(time: 8)
         let arielParentRotation = Rotation(time: 6)
-        let arielRotation = Rotation(time: 1)
+        let arielRotation = Rotation(time: 11)
         let umbrielParentRotation = Rotation(time: 6)
-        let umbrielRotation = Rotation(time: 1)
+        let umbrielRotation = Rotation(time: 13)
         let titaniaParentRotation = Rotation(time: 6)
-        let titaniaRotation = Rotation(time: 1)
+        let titaniaRotation = Rotation(time: 11)
         let oberonParentRotation = Rotation(time: 6)
-        let oberonRotation = Rotation(time: 1)
+        let oberonRotation = Rotation(time: 14)
                 // Neptune, Proteus and Triton
-        let neptuneParentRotation = Rotation(time: 60225)
-        let neptuneRotation = Rotation(time: 0.6666666)
+//        let neptuneParentRotation = Rotation(time: 60225)
+        let neptuneParentRotation = Rotation(time: 120)
+//        let neptuneRotation = Rotation(time: 0.6666666)
+         let neptuneRotation = Rotation(time: 6)
         let proteusParentRotation = Rotation(time: 6)
-        let proteusRotation = Rotation(time: 1)
+        let proteusRotation = Rotation(time: 11)
         let tritonParentRotation = Rotation(time: 6)
-        let tritonRotation = Rotation(time: 1)
+        let tritonRotation = Rotation(time: 13)
        
         // Add action to the node
         sun.runAction(sunAction)

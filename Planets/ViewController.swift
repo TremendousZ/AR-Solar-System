@@ -43,6 +43,8 @@ class ViewController: UIViewController {
         
         // Saturn, Mimas, Encheladus, Tethys, Dione, Rhea, Titan, Iapetus
         let saturnParent = SCNNode()
+        let ringNode = SCNNode()
+        let saturnRingParent = SCNNode()
         let mimasParent = SCNNode()
         let encheladusParent = SCNNode()
         let tethysParent = SCNNode()
@@ -84,6 +86,10 @@ class ViewController: UIViewController {
         callistoParent.position = SCNVector3(3.5,0,0)
         
         saturnParent.position = SCNVector3(0,0,-4)
+        
+        ringNode.position = SCNVector3(0,0,-4)
+        saturnRingParent.position = SCNVector3(5,0,0)
+
         mimasParent.position = SCNVector3(5,0,0)
         encheladusParent.position = SCNVector3(5,0,0)
         tethysParent.position = SCNVector3(5,0,0)
@@ -111,6 +117,7 @@ class ViewController: UIViewController {
         self.sceneView.scene.rootNode.addChildNode(marsParent)
         self.sceneView.scene.rootNode.addChildNode(jupiterParent)
         self.sceneView.scene.rootNode.addChildNode(saturnParent)
+        self.sceneView.scene.rootNode.addChildNode(ringNode)
         self.sceneView.scene.rootNode.addChildNode(uranusParent)
         self.sceneView.scene.rootNode.addChildNode(neptuneParent)
 
@@ -147,6 +154,11 @@ class ViewController: UIViewController {
  
         // Saturn, Mimas, Encheladus, Tethys, Dione, Rhea, Titan, Iapetus
         let saturn = planet(geometry: SCNSphere(radius: 1.0), diffuse: UIImage(named: "Saturn diffuse"), specular:nil,  emission:nil, normal: nil, position: SCNVector3(10,0,0))
+        
+        let saturnRing = SCNNode(geometry: SCNTube(innerRadius: 1.25, outerRadius: 2.2, height: 0.02))
+            saturnRing.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "Saturn Ring");
+            saturnRing.eulerAngles = SCNVector3(-10,20,0)
+            saturnRing.position = SCNVector3(5,0,0)
         
         let mimas = planet(geometry: SCNSphere(radius:0.0016), diffuse: UIImage(named:"Moon diffuse"), specular: nil, emission: nil, normal: nil, position:   SCNVector3(0,0,-0.3))
         
@@ -204,6 +216,8 @@ class ViewController: UIViewController {
         jupiter.addChildNode(callisto)
         
         saturnParent.addChildNode(saturn)
+        saturnParent.addChildNode(saturnRingParent)
+        saturnRingParent.addChildNode(saturnRing)
         saturn.addChildNode(mimas)
         saturn.addChildNode(encheladus)
         saturn.addChildNode(tethys)
@@ -241,10 +255,10 @@ class ViewController: UIViewController {
         
         let sunAction = Rotation(time: 27)
         
-        let mercuryParentRotation = Rotation(time: 88)
+        let mercuryParentRotation = Rotation(time: 6)
 //        let mercuryRotation = Rotation(time: 58.666667)
         let mercuryRotation = Rotation(time: 10)
-        let venusParentRotation = Rotation(time: 225)
+        let venusParentRotation = Rotation(time: 17.5)
 //        let venusRotation = Rotation(time: 242.999999999)
         let venusRotation = Rotation(time: 20)
 //        let earthParentRotation = Rotation(time: 365)
@@ -278,8 +292,10 @@ class ViewController: UIViewController {
            // Saturn, Mimas, Encheladus, Tethys, Dione, Rhea, Titan, Iapetus
 //        let saturnParentRotation = Rotation(time: 10585)
           let saturnParentRotation = Rotation(time: 80)
+          
 //        let saturnRotation = Rotation(time: 0.458333)
         let saturnRotation = Rotation(time: 7)
+//        let ringNodeRotation = Rotation(time: 80)
         let mimasParentRotation = Rotation(time: 6)
         let mimasRotation = Rotation(time: 10)
         let encheladusParentRotation = Rotation(time: 6)
@@ -353,6 +369,7 @@ class ViewController: UIViewController {
         
         // Saturn, Mimas, Encheladus, Tethys, Dione, Rhea, Titan, Iapetus
         saturnParent.runAction(saturnParentRotation)
+//        ringNode.runAction(ringNodeRotation)
         saturn.runAction(saturnRotation)
         mimasParent.runAction(mimasParentRotation)
         mimas.runAction(mimasRotation)
